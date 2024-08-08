@@ -42,10 +42,11 @@ const sanNicolasGolf = [
 
 
 class Jugador {
-    constructor(nombre, handicap) {
-        this.nombre = nombre;
+    constructor(id, handicap){
+        this.id = id;
         this.handicap = handicap;
     }
+    sanNicolasGolf
 }
 
 const jugador1 = new Jugador("Joaquin", 4)
@@ -67,28 +68,35 @@ function scoreCard(hoyo, golpes){
     console.log(`${golpes} golpes en el hoyo ${hoyo}`);
 }
 
-
-
-for(let i = 0; i < sanNicolasGolf.length; i++){
-    hoyo = sanNicolasGolf[i].id;
-    golpes = parseInt(prompt(`Cuantos golpes hiciste en el hoyo ${hoyo}?`));
-    if(isNaN(golpes)){
-        alert("No ingresaste un dato valido, vuelva a empezar");
-        break;
-    } else {
-    scoreCard(hoyo, golpes);
-    if (hoyo === 9){
-        console.log(`Hiciste un gross de ${golpesTotales} golpes y un neto de ${golpesTotales - jugador1.handicap} golpes `);
-    } else {
-        console.log(`Estas haciendo un parcial de ${golpesTotales} golpes`);
-    };
+function rondaNueva(array) {
+    for(let i = 0; i < array.length; i++){
+        hoyo = array[i].id;
+        golpes = parseInt(prompt(`Cuantos golpes hiciste en el hoyo ${hoyo}?`));
+        if(isNaN(golpes)){
+            alert("No ingresaste un dato valido, vuelva a empezar");
+            break;
+        } else {
+        scoreCard(hoyo, golpes);
+        if (hoyo === 9){
+            console.log(`Hiciste un gross de ${golpesTotales} golpes y un neto de ${golpesTotales - jugador1.handicap} golpes `);
+        } else {
+            console.log(`Estas haciendo un parcial de ${golpesTotales} golpes`);
+        };
+    }
+    }
 }
-}
+
+rondaNueva(sanNicolasGolf);
 
 
 
+const par3 = sanNicolasGolf.filter((el) => el.par === 3);
+const par4 = sanNicolasGolf.filter((el) => el.par === 4);
+const par5 = sanNicolasGolf.filter((el) => el.par === 5);
 
-
+console.log(par3);
+console.log(par4);
+console.log(par5);
 
 
 
